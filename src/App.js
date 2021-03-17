@@ -12,7 +12,8 @@ const spotify = new SpotifyWebApi()
 function App() {
   const [{user,token}, dispatch] = useStateVal()
 
-  console.log('user rom the reducer', user)
+  console.log('user from the reducer', user)
+
 
   useEffect(() => {
     const hash = getTokenFromUrl()
@@ -38,6 +39,15 @@ function App() {
         dispatch({
           type: 'SET_USER',
           user
+        })
+      })
+
+      spotify.getUserPlaylists().then(playlists=>{
+        console.log('playlist of user from spotify',playlists)
+
+        dispatch({
+          type: 'SET_PLAYLIST',
+          playlists    //playlists:playlists
         })
       })
 

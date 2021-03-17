@@ -1,8 +1,70 @@
 .footer{
+    display: flex;
+    justify-content: space-between;
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 97%;
     height: 65px;
     background:#282828;
     padding: 20px;
 }
+
+.footer__left{
+    flex: 0.3;
+    display: flex;
+    color: white;
+    align-items: center;
+    width:300px
+
+}
+
+.footer__image{
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+    object-fit: contain;
+}
+
+.footer__albuminfo > h4{
+    margin-bottom: 5px;
+}
+
+.footer__albuminfo > p{
+    font-size: 12px;
+}
+
+.footer__center{
+    display: flex;
+    flex: 0.4;
+    padding: 0 100px;
+    color:white;
+    align-items: center;
+    justify-content:space-between;
+    max-width: 300px;
+
+}
+
+.footer__right{
+    display: flex;
+    flex: 0.3;
+    align-items: center;
+    color: white;
+    justify-content: space-between;
+}
+
+/* to change the color of the slider */
+
+.footer__right * .MuiSlider-root {
+    color: #1ed15e;
+}
+
+.footer__green{
+    color: #1ed15e;
+}
+
+.footer__green:hover , .footer__icon:hover{
+    transform: scale(1.2);
+    transition: transform 0.2s ease-in-out;
+
+}
+
