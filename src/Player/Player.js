@@ -6,12 +6,12 @@ import './Player.css'
 
 
 
-function Player() {
+function Player(props) {
     return (
         <div className="player">
             <div className="player__body">
             <Sidebar/>
-            <Body/>
+            <Body spotify={props.spotify}/>
             </div>
             <Footer/>
         </div>

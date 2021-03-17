@@ -39,6 +39,7 @@ function App() {
         dispatch({
           type: 'SET_USER',
           user
+
         })
       })
 
@@ -51,6 +52,17 @@ function App() {
         })
       })
 
+
+      //getting a single playlist i.e billboard playlist
+
+      spotify.getPlaylist('6UeSakyzhiEt4NB3UAd6NQ').then(response =>{
+        console.log(response)
+        dispatch({
+          type: 'SET_BILLBOARD',
+          billboard: response
+        })
+      })
+
     }
   }, [])
 
@@ -58,7 +70,7 @@ function App() {
     <div className="app">
 
       {
-        token ? <Player/> : <Login />
+        token ? <Player spotify={spotify}/> : <Login />
       }
 
 

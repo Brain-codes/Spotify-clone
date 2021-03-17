@@ -1,11 +1,12 @@
-import { SET_USER, SET_TOKEN, SET_PLAYLIST } from './action'
+import { SET_USER, SET_TOKEN, SET_PLAYLIST, SET_BILLBOARD } from './action'
 
 export const initialState = {
-    user: '',
+    user: null,
     playlists: [],
     playing: false,
     item: "",
-    token: 'BQA2Iqcm4W8V_OQtmjYoTyfT4B0q92GJnlz-SQkhqEtxZ-H9NRltntWEv2gh9AZWc4f-VMKGNVRVFOEeMaLwkUYGKDklhO4qjbSyu8C7cufZVvaj62y34Txg9G89UXvHwWWoNG-TumtuGrRKwDXKxxu97OzWFhgd5kaDMNJGk9E5ov-JMwB3'
+    token: "",
+    billboard: null,
 }
 
 export const reducer = (state, action) => {
@@ -24,6 +25,12 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 playlists: action.playlists
+            }
+
+        case SET_BILLBOARD:
+            return{
+                ...state,
+                billboard: action.billboard
             }
         default:
             return state
