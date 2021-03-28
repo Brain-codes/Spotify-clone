@@ -1,8 +1,9 @@
-import { SET_USER, SET_TOKEN, SET_PLAYLIST, SET_BILLBOARD } from './action'
+import { SET_USER, SET_TOKEN, SET_PLAYLIST, SET_BILLBOARD, SET_ALLPLAYLIST } from './action'
 
 export const initialState = {
     user: null,
     playlists: [],
+    allPlaylists: [],
     playing: false,
     item: "",
     token: "",
@@ -31,6 +32,12 @@ export const reducer = (state, action) => {
             return{
                 ...state,
                 billboard: action.billboard
+            }
+
+        case SET_ALLPLAYLIST:
+            return{
+                ...state,
+                allplaylists: action.allplaylists
             }
         default:
             return state

@@ -1,6 +1,6 @@
 .sidebar{
-    height: 800vh;
-    flex: 0.2;
+    position: fixed;
+    height: 100vh;
     background:#040404;
     color:white;
     min-width: 230px;

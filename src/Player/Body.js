@@ -10,6 +10,10 @@ import SongRow from './SongRow'
 function Body(props) {
     const [{billboard}] = useStateVal()
     console.log('billboard in body', billboard)
+
+
+
+
     return (
         <div className="body">
           <BodyHeader spotify={props.spotify}/>
@@ -35,10 +39,9 @@ function Body(props) {
               <div>
                   {
                       billboard?.tracks.items.map(item =>{
-                        console.log(item);
-                        console.log(item.track);
+                        
                         return(
-                            <SongRow track={item.track}/>
+                            <SongRow track={item.track} trackuri={item.track.uri} chooseTrack={props.chooseTrack}/>
                           )
                       })
                   }

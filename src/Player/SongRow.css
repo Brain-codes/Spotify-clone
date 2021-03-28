@@ -1,0 +1,53 @@
+.songrow{
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    padding: 20px;
+    color: white;
+}
+
+.songrow__title{
+    display: flex;
+    flex: 0.4;
+}
+
+.songrow__image{
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.songrow__info{
+    margin-left:20px;
+}
+
+.songrow__album{
+    flex: 0.3;
+    margin: 0 20px;
+}
+
+.songrow__date{
+    flex: 0.2;
+}
+
+.songrow__duration{
+    flex: 0.1
+}
+
+
+.songrow:hover{
+    cursor: pointer;
+    background-color:black;
+    opacity: 0.8;
+}
+
+
+.songrow__info >h1{
+    font-size: 16px;
+}
+
+.songrow__info >p{
+    font-size: 14px;
+    margin-top: 3px;
+    color: gray;
+}

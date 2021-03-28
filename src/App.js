@@ -1,16 +1,16 @@
-import React, {useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Login from './Login/Login';
 import Player from './Player/Player';
 import { getTokenFromUrl } from './spotify'
-import SpotifyWebApi  from 'spotify-web-api-js'
+import SpotifyWebApi from 'spotify-web-api-js'
 import { useStateVal } from './Hooks/StateProvider';
 
 
 const spotify = new SpotifyWebApi()
 
 function App() {
-  const [{user,token}, dispatch] = useStateVal()
+  const [{ user, token }, dispatch] = useStateVal()
 
   console.log('user from the reducer', user)
 
@@ -27,14 +27,12 @@ function App() {
 
       dispatch({
         type: 'SET_TOKEN',
-        token:_token
+        token: _token
       })
 
-
-
       spotify.setAccessToken(_token)
-      spotify.getMe().then(user=>{
-        console.log('user from spotify',user)
+      spotify.getMe().then(user => {
+        console.log('user from spotify', user)
 
         dispatch({
           type: 'SET_USER',
@@ -43,8 +41,9 @@ function App() {
         })
       })
 
-      spotify.getUserPlaylists().then(playlists=>{
-        console.log('playlist of user from spotify',playlists)
+      //getting user playlist
+      spotify.getUserPlaylists().then(playlists => {
+        console.log('playlist of user from spotify', playlists)
 
         dispatch({
           type: 'SET_PLAYLIST',
@@ -52,10 +51,21 @@ function App() {
         })
       })
 
+      //getting all artists playlists
+        spotify.getArtists(['2hazSY4Ef3aB9ATXW7F5w3', '6J6yx1t3nwIDyPXk5xa7O8']).then(allPlaylists =>{
+          console.log(allPlaylists)
+
+          dispatch({
+            type: 'SET_ALLPLAYLIST',
+            allPlaylists
+          })
+        })
+
+
 
       //getting a single playlist i.e billboard playlist
 
-      spotify.getPlaylist('6UeSakyzhiEt4NB3UAd6NQ').then(response =>{
+      spotify.getPlaylist('6UeSakyzhiEt4NB3UAd6NQ').then(response => {
         console.log(response)
         dispatch({
           type: 'SET_BILLBOARD',
@@ -64,13 +74,13 @@ function App() {
       })
 
     }
-  }, [])
+  }, [token, dispatch])
 
   return (
     <div className="app">
 
       {
-        token ? <Player spotify={spotify}/> : <Login />
+        token ? <Player spotify={spotify} /> : <Login />
       }
 
 
